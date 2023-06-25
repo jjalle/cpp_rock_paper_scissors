@@ -57,6 +57,7 @@ void TurnEngine::playTurn(const Hand& playerHand, const Hand& cpuHand) {
         cpuScore_++;
         output_ << "Lose." << std::endl;
     }
+    output_ << std::endl;
     turn_++;
 }
 

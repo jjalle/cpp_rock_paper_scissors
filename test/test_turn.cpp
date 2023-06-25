@@ -88,7 +88,7 @@ TEST(TurnEngineTest, EarlyFinishEven) {
 }
 
 TEST(TurnEngineTest, EarlyFinishOdd) {
-    const auto ODD_TURNS = uint64_t{5};
+    const auto ODD_TURNS = uint64_t{ 5 };
     auto engine = TurnEngine(0);
     engine.startNewGame(ODD_TURNS);
     ASSERT_FALSE(engine.finished());

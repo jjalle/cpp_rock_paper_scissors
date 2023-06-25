@@ -11,10 +11,10 @@ namespace Game {
     class Hand {
     public:
         Hand(HandType type): type_(type) {};
-        bool operator==(const Hand& other) const {
+        bool operator==(const Hand& other) const noexcept {
             return type_ == other.type_;
         }
-        bool operator<(const Hand& other) const {
+        bool operator<(const Hand& other) const noexcept {
             if (type_ == HandType::ROCK) {
                 return (other.type_ == HandType::PAPER);
             } else if (type_ == HandType::PAPER) {
@@ -24,20 +24,20 @@ namespace Game {
                 return (other.type_ == HandType::ROCK);
             }
         }
-        bool operator>(const Hand& other) const {
+        bool operator>(const Hand& other) const noexcept {
             if (*this == other) {
                 return false;
             } else {
                 return !(*this<other);
             }
         }
-        bool operator>=(const Hand& other) const {
+        bool operator>=(const Hand& other) const noexcept {
             return !(*this<other);
         }
-        bool operator!=(const Hand& other) const {
+        bool operator!=(const Hand& other) const noexcept {
             return !(*this==other);
         }
-        bool operator<=(const Hand& other) const {
+        bool operator<=(const Hand& other) const noexcept {
             return !(*this>other);
         }
         friend std::ostream& operator<< (std::ostream& stream, const Hand& hand) {
