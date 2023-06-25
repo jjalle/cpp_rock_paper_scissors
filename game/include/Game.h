@@ -1,9 +1,10 @@
 #pragma once
 
 #include <string>
+
+#include "Config.h"
 #include "Input.h"
 #include "Turn.h"
-#include "Config.h"
 
 namespace Game {
 	class Game
