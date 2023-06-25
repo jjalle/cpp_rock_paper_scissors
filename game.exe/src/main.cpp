@@ -2,6 +2,6 @@
 
 int main() {
     auto game = Game::Game{};
-    auto result = game.run();
-    return result;
+    game.run();
+    return 0;
 }

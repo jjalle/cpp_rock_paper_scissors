@@ -44,7 +44,7 @@ uint64_t Input::getNumberOfTurns() const {
 }
 
 Hand Input::getPlayerHand() const {
-    output_ << "Which hand do you want to use?" << std::endl;
+    output_ << "Which hand do you want to use? [use leter + enter]" << std::endl;
     output_ << "\tRock\t\t[R/r]" << std::endl;
     output_ << "\tPaper\t\t[P/p]" << std::endl;
     output_ << "\tScissors\t[S/s]" << std::endl;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 
 #include "Config.h"
@@ -10,16 +11,11 @@ namespace Game {
 	class Game
 	{
 	public:
-		Game() : Game(Config()) {};
-		Game(const Config& config);
-		int run();
-		bool isRunning() const { return running_; };
-		void quit() { running_ = false; };
+		Game(std::istream& input = std::cin, std::ostream& output = std::cout) : Game(Config(), input, output) {};
+		Game(const Config& config, std::istream& input = std::cin, std::ostream& output = std::cout);
+		void run();
 	private:
-		void menu();
-		void playGame();
 		TurnEngine turnEngine_;
-		bool running_;
 		Input input_;
 	};
 }
