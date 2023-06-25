@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-06-25 22:06:43</td>
+            <td class="headerValue">2023-06-25 22:59:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -170,15 +170,15 @@
 <a name="108"><span class="lineNum">     108 </span>            :     {</a>
 <a name="109"><span class="lineNum">     109 </span>            :       using _Stored_type = remove_const_t&lt;_Tp&gt;;</a>
 <a name="110"><span class="lineNum">     110 </span>            : </a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         32 :       _Optional_payload_base() = default;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         16 :       _Optional_payload_base() = default;</span></a>
 <a name="112"><span class="lineNum">     112 </span>            :       ~_Optional_payload_base() = default;</a>
 <a name="113"><span class="lineNum">     113 </span>            : </a>
 <a name="114"><span class="lineNum">     114 </span>            :       template&lt;typename... _Args&gt;</a>
 <a name="115"><span class="lineNum">     115 </span>            :         constexpr</a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         16 :         _Optional_payload_base(in_place_t __tag, _Args&amp;&amp;... __args)</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         16 :         : _M_payload(__tag, std::forward&lt;_Args&gt;(__args)...),</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">         16 :           _M_engaged(true)</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         16 :         { }</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          8 :         _Optional_payload_base(in_place_t __tag, _Args&amp;&amp;... __args)</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          8 :         : _M_payload(__tag, std::forward&lt;_Args&gt;(__args)...),</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          8 :           _M_engaged(true)</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          8 :         { }</span></a>
 <a name="120"><span class="lineNum">     120 </span>            : </a>
 <a name="121"><span class="lineNum">     121 </span>            :       template&lt;typename _Up, typename... _Args&gt;</a>
 <a name="122"><span class="lineNum">     122 </span>            :         constexpr</a>
@@ -259,13 +259,13 @@
 <a name="197"><span class="lineNum">     197 </span>            :       template&lt;typename _Up, bool = is_trivially_destructible_v&lt;_Up&gt;&gt;</a>
 <a name="198"><span class="lineNum">     198 </span>            :         union _Storage</a>
 <a name="199"><span class="lineNum">     199 </span>            :         {</a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         32 :           constexpr _Storage() noexcept : _M_empty() { }</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         16 :           constexpr _Storage() noexcept : _M_empty() { }</span></a>
 <a name="201"><span class="lineNum">     201 </span>            : </a>
 <a name="202"><span class="lineNum">     202 </span>            :           template&lt;typename... _Args&gt;</a>
 <a name="203"><span class="lineNum">     203 </span>            :             constexpr</a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">         16 :             _Storage(in_place_t, _Args&amp;&amp;... __args)</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         16 :             : _M_value(std::forward&lt;_Args&gt;(__args)...)</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">         16 :             { }</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          8 :             _Storage(in_place_t, _Args&amp;&amp;... __args)</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          8 :             : _M_value(std::forward&lt;_Args&gt;(__args)...)</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          8 :             { }</span></a>
 <a name="207"><span class="lineNum">     207 </span>            : </a>
 <a name="208"><span class="lineNum">     208 </span>            :           template&lt;typename _Vp, typename... _Args&gt;</a>
 <a name="209"><span class="lineNum">     209 </span>            :             constexpr</a>
@@ -327,8 +327,8 @@
 <a name="265"><span class="lineNum">     265 </span>            :       // const-qualification, because _M_payload has had the const removed.</a>
 <a name="266"><span class="lineNum">     266 </span>            : </a>
 <a name="267"><span class="lineNum">     267 </span>            :       constexpr _Tp&amp;</a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         16 :       _M_get() noexcept</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         16 :       { return this-&gt;_M_payload._M_value; }</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          8 :       _M_get() noexcept</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          8 :       { return this-&gt;_M_payload._M_value; }</span></a>
 <a name="270"><span class="lineNum">     270 </span>            : </a>
 <a name="271"><span class="lineNum">     271 </span>            :       constexpr const _Tp&amp;</a>
 <a name="272"><span class="lineNum">     272 </span>            :       _M_get() const noexcept</a>
@@ -362,7 +362,7 @@
 <a name="300"><span class="lineNum">     300 </span>            :     {</a>
 <a name="301"><span class="lineNum">     301 </span>            :       using _Optional_payload_base&lt;_Tp&gt;::_Optional_payload_base;</a>
 <a name="302"><span class="lineNum">     302 </span>            : </a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         32 :       _Optional_payload() = default;</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         16 :       _Optional_payload() = default;</span></a>
 <a name="304"><span class="lineNum">     304 </span>            :     };</a>
 <a name="305"><span class="lineNum">     305 </span>            : </a>
 <a name="306"><span class="lineNum">     306 </span>            :   // Payload for optionals with non-trivial copy construction/assignment.</a>
@@ -491,15 +491,15 @@
 <a name="429"><span class="lineNum">     429 </span>            :       _M_reset() noexcept</a>
 <a name="430"><span class="lineNum">     430 </span>            :       { static_cast&lt;_Dp*&gt;(this)-&gt;_M_payload._M_reset(); }</a>
 <a name="431"><span class="lineNum">     431 </span>            : </a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">         48 :       constexpr bool _M_is_engaged() const noexcept</span></a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">         48 :       { return static_cast&lt;const _Dp*&gt;(this)-&gt;_M_payload._M_engaged; }</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">         24 :       constexpr bool _M_is_engaged() const noexcept</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">         24 :       { return static_cast&lt;const _Dp*&gt;(this)-&gt;_M_payload._M_engaged; }</span></a>
 <a name="434"><span class="lineNum">     434 </span>            : </a>
 <a name="435"><span class="lineNum">     435 </span>            :       // The _M_get operations have _M_engaged as a precondition.</a>
 <a name="436"><span class="lineNum">     436 </span>            :       constexpr _Tp&amp;</a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">         16 :       _M_get() noexcept</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">          8 :       _M_get() noexcept</span></a>
 <a name="438"><span class="lineNum">     438 </span>            :       {</a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">         16 :         __glibcxx_assert(this-&gt;_M_is_engaged());</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">         16 :         return static_cast&lt;_Dp*&gt;(this)-&gt;_M_payload._M_get();</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">          8 :         __glibcxx_assert(this-&gt;_M_is_engaged());</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">          8 :         return static_cast&lt;_Dp*&gt;(this)-&gt;_M_payload._M_get();</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :       }</a>
 <a name="442"><span class="lineNum">     442 </span>            : </a>
 <a name="443"><span class="lineNum">     443 </span>            :       constexpr const _Tp&amp;</a>
@@ -664,15 +664,15 @@
 <a name="602"><span class="lineNum">     602 </span>            :     : _Optional_base_impl&lt;_Tp, _Optional_base&lt;_Tp&gt;&gt;</a>
 <a name="603"><span class="lineNum">     603 </span>            :     {</a>
 <a name="604"><span class="lineNum">     604 </span>            :       // Constructors for disengaged optionals.</a>
-<a name="605"><span class="lineNum">     605 </span><span class="lineCov">         32 :       constexpr _Optional_base() = default;</span></a>
+<a name="605"><span class="lineNum">     605 </span><span class="lineCov">         16 :       constexpr _Optional_base() = default;</span></a>
 <a name="606"><span class="lineNum">     606 </span>            : </a>
 <a name="607"><span class="lineNum">     607 </span>            :       // Constructors for engaged optionals.</a>
 <a name="608"><span class="lineNum">     608 </span>            :       template&lt;typename... _Args,</a>
 <a name="609"><span class="lineNum">     609 </span>            :                enable_if_t&lt;is_constructible_v&lt;_Tp, _Args...&gt;, bool&gt; = false&gt;</a>
 <a name="610"><span class="lineNum">     610 </span>            :         constexpr explicit</a>
-<a name="611"><span class="lineNum">     611 </span><span class="lineCov">         16 :         _Optional_base(in_place_t, _Args&amp;&amp;... __args)</span></a>
-<a name="612"><span class="lineNum">     612 </span><span class="lineCov">         16 :         : _M_payload(in_place, std::forward&lt;_Args&gt;(__args)...)</span></a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">         16 :         { }</span></a>
+<a name="611"><span class="lineNum">     611 </span><span class="lineCov">          8 :         _Optional_base(in_place_t, _Args&amp;&amp;... __args)</span></a>
+<a name="612"><span class="lineNum">     612 </span><span class="lineCov">          8 :         : _M_payload(in_place, std::forward&lt;_Args&gt;(__args)...)</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">          8 :         { }</span></a>
 <a name="614"><span class="lineNum">     614 </span>            : </a>
 <a name="615"><span class="lineNum">     615 </span>            :       template&lt;typename _Up, typename... _Args,</a>
 <a name="616"><span class="lineNum">     616 </span>            :                enable_if_t&lt;is_constructible_v&lt;_Tp,</a>
@@ -755,7 +755,7 @@
 <a name="693"><span class="lineNum">     693 </span>            : </a>
 <a name="694"><span class="lineNum">     694 </span>            :       constexpr optional() noexcept { }</a>
 <a name="695"><span class="lineNum">     695 </span>            : </a>
-<a name="696"><span class="lineNum">     696 </span><span class="lineCov">         32 :       constexpr optional(nullopt_t) noexcept { }</span></a>
+<a name="696"><span class="lineNum">     696 </span><span class="lineCov">         16 :       constexpr optional(nullopt_t) noexcept { }</span></a>
 <a name="697"><span class="lineNum">     697 </span>            : </a>
 <a name="698"><span class="lineNum">     698 </span>            :       // Converting constructors for engaged optionals.</a>
 <a name="699"><span class="lineNum">     699 </span>            :       template&lt;typename _Up = _Tp,</a>
@@ -763,9 +763,9 @@
 <a name="701"><span class="lineNum">     701 </span>            :                          is_constructible&lt;_Tp, _Up&gt;,</a>
 <a name="702"><span class="lineNum">     702 </span>            :                          is_convertible&lt;_Up, _Tp&gt;&gt; = true&gt;</a>
 <a name="703"><span class="lineNum">     703 </span>            :         constexpr</a>
-<a name="704"><span class="lineNum">     704 </span><span class="lineCov">         16 :         optional(_Up&amp;&amp; __t)</span></a>
+<a name="704"><span class="lineNum">     704 </span><span class="lineCov">          8 :         optional(_Up&amp;&amp; __t)</span></a>
 <a name="705"><span class="lineNum">     705 </span>            :         noexcept(is_nothrow_constructible_v&lt;_Tp, _Up&gt;)</a>
-<a name="706"><span class="lineNum">     706 </span><span class="lineCov">         16 :         : _Base(std::in_place, std::forward&lt;_Up&gt;(__t)) { }</span></a>
+<a name="706"><span class="lineNum">     706 </span><span class="lineCov">          8 :         : _Base(std::in_place, std::forward&lt;_Up&gt;(__t)) { }</span></a>
 <a name="707"><span class="lineNum">     707 </span>            : </a>
 <a name="708"><span class="lineNum">     708 </span>            :       template&lt;typename _Up = _Tp,</a>
 <a name="709"><span class="lineNum">     709 </span>            :                _Requires&lt;__not_self&lt;_Up&gt;, __not_tag&lt;_Up&gt;,</a>
@@ -989,8 +989,8 @@
 <a name="927"><span class="lineNum">     927 </span>            :       { return this-&gt;_M_get(); }</a>
 <a name="928"><span class="lineNum">     928 </span>            : </a>
 <a name="929"><span class="lineNum">     929 </span>            :       constexpr _Tp&amp;</a>
-<a name="930"><span class="lineNum">     930 </span><span class="lineCov">         16 :       operator*()&amp; noexcept</span></a>
-<a name="931"><span class="lineNum">     931 </span><span class="lineCov">         16 :       { return this-&gt;_M_get(); }</span></a>
+<a name="930"><span class="lineNum">     930 </span><span class="lineCov">          8 :       operator*()&amp; noexcept</span></a>
+<a name="931"><span class="lineNum">     931 </span><span class="lineCov">          8 :       { return this-&gt;_M_get(); }</span></a>
 <a name="932"><span class="lineNum">     932 </span>            : </a>
 <a name="933"><span class="lineNum">     933 </span>            :       constexpr _Tp&amp;&amp;</a>
 <a name="934"><span class="lineNum">     934 </span>            :       operator*()&amp;&amp; noexcept</a>
@@ -1000,8 +1000,8 @@
 <a name="938"><span class="lineNum">     938 </span>            :       operator*() const&amp;&amp; noexcept</a>
 <a name="939"><span class="lineNum">     939 </span>            :       { return std::move(this-&gt;_M_get()); }</a>
 <a name="940"><span class="lineNum">     940 </span>            : </a>
-<a name="941"><span class="lineNum">     941 </span><span class="lineCov">         48 :       constexpr explicit operator bool() const noexcept</span></a>
-<a name="942"><span class="lineNum">     942 </span><span class="lineCov">         48 :       { return this-&gt;_M_is_engaged(); }</span></a>
+<a name="941"><span class="lineNum">     941 </span><span class="lineCov">         24 :       constexpr explicit operator bool() const noexcept</span></a>
+<a name="942"><span class="lineNum">     942 </span><span class="lineCov">         24 :       { return this-&gt;_M_is_engaged(); }</span></a>
 <a name="943"><span class="lineNum">     943 </span>            : </a>
 <a name="944"><span class="lineNum">     944 </span>            :       constexpr bool has_value() const noexcept</a>
 <a name="945"><span class="lineNum">     945 </span>            :       { return this-&gt;_M_is_engaged(); }</a>

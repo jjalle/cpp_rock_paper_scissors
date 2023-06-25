@@ -1,6 +1,7 @@
 #define GTEST_LANG_CXX11 1
 #include <gtest/gtest.h>
 
+#include <sstream>
 #include "Turn.h"
 #include "Hand.h"
 
@@ -99,4 +100,37 @@ TEST(TurnEngineTest, EarlyFinishOdd) {
     winTurn(engine);
     ASSERT_TRUE(engine.finished());
     ASSERT_LT(engine.getCurrentTurn(), ODD_TURNS);
+}
+
+TEST(TurnEngineTest, DisplayWin) {
+    auto output = std::string{""};
+    auto ostream = std::ostringstream{output};
+    auto engine = TurnEngine(0, ostream);
+    engine.startNewGame(1);
+    winTurn(engine);
+    engine.displayResults();
+    auto out = ostream.str();
+    ASSERT_NE(out.find("You win", 0), std::string::npos);
+}
+
+TEST(TurnEngineTest, DisplayLose) {
+    auto output = std::string{""};
+    auto ostream = std::ostringstream{output};
+    auto engine = TurnEngine(0, ostream);
+    engine.startNewGame(1);
+    loseTurn(engine);
+    engine.displayResults();
+    auto out = ostream.str();
+    ASSERT_NE(out.find("You lose", 0), std::string::npos);
+}
+
+TEST(TurnEngineTest, DisplayDraw) {
+    auto output = std::string{""};
+    auto ostream = std::ostringstream{output};
+    auto engine = TurnEngine(0, ostream);
+    engine.startNewGame(1);
+    tieTurn(engine);
+    engine.displayResults();
+    auto out = ostream.str();
+    ASSERT_NE(out.find("Draw", 0), std::string::npos);
 }

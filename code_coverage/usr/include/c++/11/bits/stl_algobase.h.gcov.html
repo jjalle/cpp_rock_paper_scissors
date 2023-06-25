@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-06-25 22:06:43</td>
+            <td class="headerValue">2023-06-25 22:59:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -289,14 +289,14 @@
 <a name="227"><span class="lineNum">     227 </span>            :   template&lt;typename _Tp&gt;</a>
 <a name="228"><span class="lineNum">     228 </span>            :     _GLIBCXX14_CONSTEXPR</a>
 <a name="229"><span class="lineNum">     229 </span>            :     inline const _Tp&amp;</a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">       5801 :     min(const _Tp&amp; __a, const _Tp&amp; __b)</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">       3438 :     min(const _Tp&amp; __a, const _Tp&amp; __b)</span></a>
 <a name="231"><span class="lineNum">     231 </span>            :     {</a>
 <a name="232"><span class="lineNum">     232 </span>            :       // concept requirements</a>
 <a name="233"><span class="lineNum">     233 </span>            :       __glibcxx_function_requires(_LessThanComparableConcept&lt;_Tp&gt;)</a>
 <a name="234"><span class="lineNum">     234 </span>            :       //return __b &lt; __a ? __b : __a;</a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       5801 :       if (__b &lt; __a)</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">         12 :         return __b;</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       5789 :       return __a;</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       3438 :       if (__b &lt; __a)</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          6 :         return __b;</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       3432 :       return __a;</span></a>
 <a name="238"><span class="lineNum">     238 </span>            :     }</a>
 <a name="239"><span class="lineNum">     239 </span>            : </a>
 <a name="240"><span class="lineNum">     240 </span>            :   /**</a>
@@ -313,14 +313,14 @@
 <a name="251"><span class="lineNum">     251 </span>            :   template&lt;typename _Tp&gt;</a>
 <a name="252"><span class="lineNum">     252 </span>            :     _GLIBCXX14_CONSTEXPR</a>
 <a name="253"><span class="lineNum">     253 </span>            :     inline const _Tp&amp;</a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">       2747 :     max(const _Tp&amp; __a, const _Tp&amp; __b)</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">       1630 :     max(const _Tp&amp; __a, const _Tp&amp; __b)</span></a>
 <a name="255"><span class="lineNum">     255 </span>            :     {</a>
 <a name="256"><span class="lineNum">     256 </span>            :       // concept requirements</a>
 <a name="257"><span class="lineNum">     257 </span>            :       __glibcxx_function_requires(_LessThanComparableConcept&lt;_Tp&gt;)</a>
 <a name="258"><span class="lineNum">     258 </span>            :       //return  __a &lt; __b ? __b : __a;</a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">       2747 :       if (__a &lt; __b)</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">       1034 :         return __b;</span></a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">       1713 :       return __a;</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">       1630 :       if (__a &lt; __b)</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">        594 :         return __b;</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">       1036 :       return __a;</span></a>
 <a name="262"><span class="lineNum">     262 </span>            :     }</a>
 <a name="263"><span class="lineNum">     263 </span>            : </a>
 <a name="264"><span class="lineNum">     264 </span>            :   /**</a>

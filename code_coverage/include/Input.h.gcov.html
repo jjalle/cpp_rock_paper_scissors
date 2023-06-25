@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-06-25 22:06:43</td>
+            <td class="headerValue">2023-06-25 22:59:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -71,7 +71,7 @@
 <a name="9"><span class="lineNum">       9 </span>            : namespace Game {</a>
 <a name="10"><span class="lineNum">      10 </span>            :     class Input {</a>
 <a name="11"><span class="lineNum">      11 </span>            :     public:</a>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          2 :         Input(const Config&amp; config, std::istream&amp; input = std::cin, std::ostream&amp; output = std::cout) : Input(config.defaultTurns(), input, output) { };</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          1 :         Input(const Config&amp; config, std::istream&amp; input = std::cin, std::ostream&amp; output = std::cout) : Input(config.defaultTurns(), input, output) { };</span></a>
 <a name="13"><span class="lineNum">      13 </span><span class="lineNoCov">          0 :         Input(uint64_t defaultTurns, std::istream&amp; input = std::cin, std::ostream&amp; output = std::cout) : defaultTurns_(defaultTurns), quit_(false), input_(input), output_(output) {};</span></a>
 <a name="14"><span class="lineNum">      14 </span>            :         uint64_t getNumberOfTurns() const;</a>
 <a name="15"><span class="lineNum">      15 </span>            :         Hand getPlayerHand() const;</a>

@@ -40,10 +40,10 @@ The game revolves around 5 main classes.
 * test: All the unit tests (using google test framework).
 * .github: Contains github actions for CI. It builds, tests and uses a linter for every commit.
 * .vscode: Configuration for VSCode editor.
-* code_coverage: Pregenerated code coverage report obtained by running `run_code_coverage.sh`.
-* precompiled: Precompiled binaries ready to use.
+* code_coverage: Pregenerated code coverage report obtained by running `run_code_coverage.sh`. I have included this because I haven't setup the CI flow to generate the code coverage.
+* precompiled: Precompiled binaries ready to use. I have included this because I haven't setup the CI flow to deploy binaries.
 
 
 ## Code
-The code is C++17 with no errors, warnings (GCC11) and also no linter errors (clang-tidy).
+The code is C++17 with no errors, warnings (GCC11) and also no linter errors (clang-tidy). Code-coverage is high (see coverage report)
 

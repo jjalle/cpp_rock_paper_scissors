@@ -6,7 +6,8 @@
 namespace Game {
     class Config {
     public:
-        Config(unsigned int seed = 0, uint64_t defaultTurns = 10) : seed_{ seed }, defaultTurns_{ defaultTurns } {};
+        Config() : Config(0, 10) {};
+        Config(unsigned int seed, uint64_t defaultTurns) : seed_{ seed }, defaultTurns_{ defaultTurns } {};
         auto defaultTurns() const noexcept { return defaultTurns_; };
         auto seed() const noexcept { return seed_; };
     private:

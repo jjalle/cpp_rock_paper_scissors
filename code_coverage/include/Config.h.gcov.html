@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-06-25 22:06:43</td>
+            <td class="headerValue">2023-06-25 22:59:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -68,14 +68,15 @@
 <a name="6"><span class="lineNum">       6 </span>            : namespace Game {</a>
 <a name="7"><span class="lineNum">       7 </span>            :     class Config {</a>
 <a name="8"><span class="lineNum">       8 </span>            :     public:</a>
-<a name="9"><span class="lineNum">       9 </span>            :         Config() : seed_{ 0 }, defaultTurns_{ 10 } {};</a>
-<a name="10"><span class="lineNum">      10 </span><span class="lineCov">          2 :         auto defaultTurns() const { return defaultTurns_; };</span></a>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          2 :         auto seed() const { return seed_; };</span></a>
-<a name="12"><span class="lineNum">      12 </span>            :     private:</a>
-<a name="13"><span class="lineNum">      13 </span>            :         unsigned int seed_;</a>
-<a name="14"><span class="lineNum">      14 </span>            :         uint64_t defaultTurns_;</a>
-<a name="15"><span class="lineNum">      15 </span>            :     };</a>
-<a name="16"><span class="lineNum">      16 </span>            : }</a>
+<a name="9"><span class="lineNum">       9 </span>            :         Config() : Config(0, 10) {};</a>
+<a name="10"><span class="lineNum">      10 </span>            :         Config(unsigned int seed, uint64_t defaultTurns) : seed_{ seed }, defaultTurns_{ defaultTurns } {};</a>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          1 :         auto defaultTurns() const noexcept { return defaultTurns_; };</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          1 :         auto seed() const noexcept { return seed_; };</span></a>
+<a name="13"><span class="lineNum">      13 </span>            :     private:</a>
+<a name="14"><span class="lineNum">      14 </span>            :         unsigned int seed_;</a>
+<a name="15"><span class="lineNum">      15 </span>            :         uint64_t defaultTurns_;</a>
+<a name="16"><span class="lineNum">      16 </span>            :     };</a>
+<a name="17"><span class="lineNum">      17 </span>            : }</a>
 </pre>
       </td>
     </tr>
