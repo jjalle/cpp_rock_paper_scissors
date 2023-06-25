@@ -11,7 +11,19 @@ const static auto MAX_TURNS = uint64_t{2};
 const static auto WINNING_HAND = RockHand();
 const static auto LOSING_HAND = ScissorsHand();
 const static auto TIE_HAND = RockHand();
-    
+
+static void winTurn(TurnEngine& engine) {
+    engine.playTurn(WINNING_HAND, LOSING_HAND);
+}
+
+static void loseTurn(TurnEngine& engine) {
+    engine.playTurn(LOSING_HAND, WINNING_HAND);
+}
+
+static void tieTurn(TurnEngine& engine) {
+    engine.playTurn(TIE_HAND, TIE_HAND);
+}
+
 TEST(TurnEngineTest, MaxTurns) {
     auto engine = TurnEngine(0);
     engine.startNewGame(MAX_TURNS);
@@ -31,7 +43,7 @@ TEST(TurnEngineTest, PlayerScores) {
     ASSERT_EQ(engine.playerScore(), 0);
     ASSERT_EQ(engine.cpuScore(), 0);
     ASSERT_EQ(engine.ties(), 0);
-    engine.playTurn(WINNING_HAND, LOSING_HAND);
+    winTurn(engine);
     ASSERT_EQ(engine.playerScore(), 1);
     ASSERT_EQ(engine.cpuScore(), 0);
     ASSERT_EQ(engine.ties(), 0);
@@ -43,7 +55,7 @@ TEST(TurnEngineTest, CpuScores) {
     ASSERT_EQ(engine.playerScore(), 0);
     ASSERT_EQ(engine.cpuScore(), 0);
     ASSERT_EQ(engine.ties(), 0);
-    engine.playTurn(LOSING_HAND, WINNING_HAND);
+    loseTurn(engine);
     ASSERT_EQ(engine.playerScore(), 0);
     ASSERT_EQ(engine.cpuScore(), 1);
     ASSERT_EQ(engine.ties(), 0);
@@ -55,8 +67,36 @@ TEST(TurnEngineTest, Tie) {
     ASSERT_EQ(engine.playerScore(), 0);
     ASSERT_EQ(engine.cpuScore(), 0);
     ASSERT_EQ(engine.ties(), 0);
-    engine.playTurn(TIE_HAND, TIE_HAND);
+    tieTurn(engine);
     ASSERT_EQ(engine.playerScore(), 0);
     ASSERT_EQ(engine.cpuScore(), 0);
     ASSERT_EQ(engine.ties(), 1);
+}
+
+TEST(TurnEngineTest, EarlyFinishEven) {
+    const auto EVEN_TURNS = uint64_t{4};
+    auto engine = TurnEngine(0);
+    engine.startNewGame(EVEN_TURNS);
+    ASSERT_FALSE(engine.finished());
+    winTurn(engine);
+    ASSERT_FALSE(engine.finished());
+    winTurn(engine);
+    ASSERT_FALSE(engine.finished());
+    winTurn(engine);
+    ASSERT_TRUE(engine.finished());
+    ASSERT_LT(engine.getCurrentTurn(), EVEN_TURNS);
+}
+
+TEST(TurnEngineTest, EarlyFinishOdd) {
+    const auto ODD_TURNS = uint64_t{5};
+    auto engine = TurnEngine(0);
+    engine.startNewGame(ODD_TURNS);
+    ASSERT_FALSE(engine.finished());
+    winTurn(engine);
+    ASSERT_FALSE(engine.finished());
+    winTurn(engine);
+    ASSERT_FALSE(engine.finished());
+    winTurn(engine);
+    ASSERT_TRUE(engine.finished());
+    ASSERT_LT(engine.getCurrentTurn(), ODD_TURNS);
 }

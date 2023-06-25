@@ -1,3 +1,5 @@
+#include <cstdlib>
+#include <errno.h>
 #include <sstream>
 #include <cstring>
 #include <iostream>
@@ -8,43 +10,54 @@
 
 namespace Game {
 
-static std::optional<Hand> validateHandInput(std::string input) {
-	return RockHand();
-}
-
-static bool validateTurnsInput(std::string input) {
-	return true;
+static std::optional<Hand> validateHandInput(char input) {
+	if (input == 'r' || input == 'R') {
+		return RockHand();
+	} else if (input == 's' || input == 'S') {
+		return ScissorsHand();
+	} else if (input == 'p' || input == 'P') {
+		return PaperHand();
+	} else {
+		return std::nullopt;
+	}
 }
 
 uint64_t Input::getNumberOfTurns() const {
-	auto turns = std::string{};
-	std::cout << "How many turns do you want to play? [enter for default: " << defaultTurns_ << "]" << std::endl << std::flush;
-	std::cin >> turns;
-	return defaultTurns_;
+	output_ << "How many turns do you want to play? [any non-integer input or 0 for default: " << defaultTurns_ << " turns]" << std::endl << std::flush;
+	auto istr = std::string{};
+	std::getline(input_, istr);
+	if (istr.empty()) {
+		return defaultTurns_;
+	}
+	// errno can be set to any non-zero value by a library function call
+	// regardless of whether there was an error, so it needs to be cleared
+	// in order to check the error set by strtol
+	errno = 0;
+	char* p_end{};
+	const auto integerValue = std::strtol(istr.c_str(), &p_end, 10);
+	if ((istr.c_str() == p_end) || (errno == ERANGE) || (integerValue <= 0)) {
+		return defaultTurns_;
+	} else {
+		// integerValue is valid and positive
+		return static_cast<uint64_t>(integerValue);
+	}
 }
 
 Hand Input::getPlayerHand() const {
-	auto selection = std::string{};
-	std::cout << "Which hand do you want to use?" << std::endl;
-	std::cout << "\tRock\t\t[R/r]" << std::endl;
-	std::cout << "\tPaper\t\t[P/p]" << std::endl;
-	std::cout << "\tScissors\t[S/s]" << std::endl;
-	std::cin >> selection;
+	output_ << "Which hand do you want to use?" << std::endl;
+	output_ << "\tRock\t\t[R/r]" << std::endl;
+	output_ << "\tPaper\t\t[P/p]" << std::endl;
+	output_ << "\tScissors\t[S/s]" << std::endl;
+	auto selection = char{};
+	input_ >> selection;
 	auto hand = validateHandInput(selection);
 	while (!hand)
 	{
-		std::cout << "Invalid input. Try again." << std::endl;
-		std::cin >> selection;
+		output_ << "Invalid input. Try again." << std::endl;
+		input_ >> selection;
 		hand = validateHandInput(selection);
 	}
 	return *hand;
-
-}
-
-bool Input::playAgain() const {
-	std::cout << "Do you want to play again? [yes/y:no/n]" << std::endl;
-	auto answer = std::string{};
-	std::cin >> answer;
 }
 
 

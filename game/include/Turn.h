@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <iostream>
 
 #include "Config.h"
 #include "Hand.h"
@@ -8,8 +9,8 @@
 namespace Game {
 	class TurnEngine {
 	public:
-		TurnEngine(const Config& config);
-		TurnEngine(unsigned int seed);
+		TurnEngine(const Config& config, std::ostream& output = std::cout);
+		TurnEngine(unsigned int seed, std::ostream& output = std::cout);
 		void startNewGame(uint64_t maxTurns);
 		uint64_t getCurrentTurn() const { return turn_; };
 		bool finished() const;
@@ -28,5 +29,6 @@ namespace Game {
 		uint64_t playerScore_;
 		uint64_t cpuScore_;
 		uint64_t ties_;
+		std::ostream& output_;
 	};
 }

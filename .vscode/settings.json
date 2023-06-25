@@ -67,5 +67,6 @@
         "iomanip": "cpp",
         "iostream": "cpp",
         "variant": "cpp"
-    }
+    },
+    "cmake.configureSettings": { "gtest_build_samples": "ON" }
 }

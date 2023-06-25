@@ -14,23 +14,14 @@ Game::Game(const Config& config) :
 
 void Game::menu() {
  	auto turns = input_.getNumberOfTurns();
-	if (input_.quit())
-	{
-		quit();
-	} else {
-		turnEngine_.startNewGame(turns);
-	}
+	turnEngine_.startNewGame(turns);
 }
 
 void Game::playGame() {
 	while (!turnEngine_.finished()) {
 		auto playerHand = input_.getPlayerHand();
-		if (input_.quit()) {
-			quit();
-		} else {
-			auto cpuHand = turnEngine_.getRandomCpuHand();
-			turnEngine_.playTurn(playerHand, cpuHand);
-		}
+		auto cpuHand = turnEngine_.getRandomCpuHand();
+		turnEngine_.playTurn(playerHand, cpuHand);
 	}
 	turnEngine_.displayResults();
 }

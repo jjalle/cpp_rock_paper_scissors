@@ -40,6 +40,16 @@ namespace Game {
 		bool operator<=(const Hand& other) const {
 			return !(*this>other);
 		}
+		friend std::ostream& operator<< (std::ostream& stream, const Hand& hand) {
+			if (hand.type_ == HandType::PAPER) {
+				stream << "PAPER";
+			} else if (hand.type_ == HandType::ROCK) {
+				stream << "ROCK";
+			} else {
+				stream << "SCISSORS";
+			}
+			return stream;
+		}
 	private:
 		HandType type_{};
 	};
