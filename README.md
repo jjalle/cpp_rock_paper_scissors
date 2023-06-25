@@ -1,5 +1,7 @@
 # C++ Rocks paper scissors game
 
+This code can also be viewed in [github](https://github.com/jjalle/cpp_rock_paper_scissors).
+
 I have interpreted the following requirements:
 
 * A game that can have N turns. I will finish the game earlier than N if there is already a winner.
@@ -40,4 +42,8 @@ The game revolves around 5 main classes.
 * .vscode: Configuration for VSCode editor.
 * code_coverage: Pregenerated code coverage report obtained by running `run_code_coverage.sh`.
 * precompiled: Precompiled binaries ready to use.
+
+
+## Code
+The code is C++17 with no errors, warnings (GCC11) and also no linter errors (clang-tidy).
 
